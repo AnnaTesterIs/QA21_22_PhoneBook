@@ -12,8 +12,10 @@ import java.util.List;
 public class HelperBase {
     public boolean isAlertPresent(String message){
         Alert alert = new WebDriverWait(wd, 10).until(ExpectedConditions.alertIsPresent());
+
         if (alert !=null&&alert.getText().contains(message)){
             //click ok
+            System.out.println(alert.getText());
             alert.accept();
         //click cancel ---> alert.dismiss();
             //type into alert ---> alert.sendKeys
