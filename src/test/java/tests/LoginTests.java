@@ -41,10 +41,6 @@ public class LoginTests extends TestBase{
 
     }
 
-
-
-
-
     @Test(dataProvider = "loginModels", dataProviderClass = DataProviderUser.class)
     public void loginSuccessModel(User user){
         logger.info("Test data ---> " + user.toString());
@@ -62,11 +58,21 @@ public class LoginTests extends TestBase{
 //        Assert.assertFalse();
     }
 
+    @Test(dataProvider = "loginFile", dataProviderClass = DataProviderUser.class)
+    public void loginSuccessModelDP(User user){
+        logger.info("Test data ---> " + user.toString());
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm(user);
+        app.getHelperUser().submitLogin();
+        Assert.assertTrue(app.getHelperUser().isLogged());
+        logger.info("Assert check is Element button 'Sign Out' present");
+    }
+
     @Test
     public void loginWrongEmail(){
-        logger.info("Test data ---> email: 'maragmail.com' & password: 'Mmar123456$' ");
+        logger.info("Test data ---> email: 'test.anna.bookgmail.com' & password: 'SAMASAMa2023@' ");
         app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLoginRegistrationForm("maragmail.com", "Mmar123456$");
+        app.getHelperUser().fillLoginRegistrationForm("test.anna.bookgmail.com", "SAMASAMa2023@");
         app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
         logger.info("Assert check is alert with error text 'Wrong email or password'");
@@ -75,10 +81,10 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginWrongPassword(){
-        logger.info("Test data ---> email: 'mara@gmail.com' & password: 'Mmar123' ");
+        logger.info("Test data ---> email: 'test.anna.book@gmail.com' & password: 'SAMASAMa2023' ");
 
         app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLoginRegistrationForm("mara@gmail.com", "Mmar123");
+        app.getHelperUser().fillLoginRegistrationForm("test.anna.book@gmail.com", "SAMASAMa2023");
         app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
         logger.info("Assert check is alert with error text 'Wrong email or password'");

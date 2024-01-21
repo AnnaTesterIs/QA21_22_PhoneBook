@@ -124,18 +124,18 @@ public class AddNewContactTests extends TestBase {
         logger.info("Assert check is ADD Page Still Displayed");
     }
 
-    @Test
-    public void addNewContactWrongPhone(){
+    @Test(dataProvider = "contactWrongPhone", dataProviderClass = DataProviderContact.class)
+    public void addNewContactWrongPhone(Contact contact){
         logger.info("Start test with name `addNewContactWrongPhone`");
         logger.info("Test data --> name:`Max` & lastName:`Best` & phone: `` & email: `test@gmail.com` & address:`` & description:`empty phone`");
-        Contact contact = Contact.builder()
-                .name("Max")
-                .lastName("Best")
-                .phone("")
-                .email("test@gmail.com")
-                .address("")
-                .description("empty phone")
-                .build();
+        //Contact contact = Contact.builder()
+               // .name("Max")
+               // .lastName("Best")
+              //  .phone("")
+              //  .email("test@gmail.com")
+               // .address("")
+              //  .description("empty phone")
+              //  .build();
         app.getHelperContact().openAddContactForm();
         app.getHelperContact().fillContactForm(contact);
       //  app.getHelperContact().pause(2500);
