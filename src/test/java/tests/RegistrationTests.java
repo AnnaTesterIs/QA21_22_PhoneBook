@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class RegistrationTests extends TestBase{
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition(){
         //if SignOut present --> logOut
         if(app.getHelperUser().isLogged()){
@@ -34,7 +34,7 @@ public class RegistrationTests extends TestBase{
         logger.info("Assert check is Element button `No Contacts here!` present");
     }
 
-    @Test(description = "Bug report #12456, Fixed")
+    @Test(description = "Bug report #12456, Fixed", groups = {"smoke"})
 
     public void registrationWrongEmail(){
         logger.info("Start test with name `registrationWrongEmail`");

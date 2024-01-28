@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.Random;
 
 public class AddNewContactTests extends TestBase {
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void preConditions() {
         if (!app.getHelperUser().isLogged()) {
             app.getHelperUser().login(new User().setEmail("test.anna.book@gmail.com").setPassword("SAMASAMa2023@"));
@@ -41,7 +41,7 @@ public class AddNewContactTests extends TestBase {
 
     }
 
-    @Test
+    @Test(groups = {"smoke", "regress", "retest"})
     public void addContactSuccessRequiredFields(){
         logger.info("Start test with name `addContactSuccessRequiredFields`");
         logger.info("Test data --> name:`Max +i`& lastName:`Best`& phone: `6789000+i` & email: `test+i+@gmail.com` & address:`Berlin` & description:`best`");
