@@ -40,7 +40,7 @@ public class AddNewContactTests extends TestBase {
 
 
     }
-
+    //firefox
     @Test(groups = {"smoke", "regress", "retest"})
     public void addContactSuccessRequiredFields(){
         logger.info("Start test with name `addContactSuccessRequiredFields`");

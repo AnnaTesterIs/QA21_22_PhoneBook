@@ -36,7 +36,7 @@ Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
         }
 
         wd.manage().window().maximize();
-        wd.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
         wd.navigate().to("https://telranedu.web.app/home");
         logger.info("The link -->"  + wd.getCurrentUrl());
         helperUser = new HelperUser(wd);
